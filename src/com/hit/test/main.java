@@ -27,7 +27,10 @@ public class main {
 //		dao.addActivity(runActivity, 7);
 //		dao.addActivity(legsActivity, 7);
 		
-		System.out.println(dao.getAllUsers().toString());
+//		System.out.println(dao.getAllUsers().toString());
+//		
+		
+
 
 		
 

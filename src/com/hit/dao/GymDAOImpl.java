@@ -154,6 +154,7 @@ public class GymDAOImpl implements IGymDAO {
 		session.beginTransaction();
 		
 		User user = session.get(User.class, user_id);
+				
 		
 		
 		Activity activity = session.get(Activity.class, updated_activity.getActivityId());
@@ -161,9 +162,9 @@ public class GymDAOImpl implements IGymDAO {
 		activity.setNumRep(updated_activity.getNumRep());
 		activity.setNumSets(updated_activity.getNumSets());
 		
-		System.out.println("get user from db: " + user.toString());
+//		System.out.println("get user from db: " + user.toString());
 		
-		user.addActivity(activity);
+//		user.addActivity(activity);
 		
 		
 		//commit the transaction
@@ -175,7 +176,7 @@ public class GymDAOImpl implements IGymDAO {
 	}
 
 	@Override
-	public void delete(Activity activity, int user_id) {
+	public void deleteActivity(Activity activity, int user_id) {
 		
 		//create new Session
 		Session session = this.openSession();
@@ -216,6 +217,30 @@ public class GymDAOImpl implements IGymDAO {
 		
 		//close session
 		session.close();
+	}
+
+	@Override
+	public List<Activity> getActivities(int user_id) {
+		
+		//create new Session
+		Session session = this.openSession();
+		
+		
+		//start transaction
+		session.beginTransaction();
+		
+		User user = session.get(User.class, user_id);
+		
+		List<Activity> activities = user.getActivites();
+
+		
+		//commit the transaction
+		session.getTransaction().commit();
+		
+		//close session
+		session.close();
+		
+		return activities;
 	}
 
 
