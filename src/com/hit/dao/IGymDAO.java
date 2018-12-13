@@ -9,8 +9,9 @@ public interface IGymDAO {
 	
 	public boolean addUser(User user);
 	public void addActivity(Activity activity, int user_id);
-	public void updateActivity(Activity activity, User id);
-	public void delete(Activity activity, User id);
+	public void updateActivity(Activity activity, int user_id);
+	public void delete(Activity activity, int user_id);
+
 	public boolean checkUserExist(User user);
 	public List<User> getAllUsers();
 	public void updateUser(User user);

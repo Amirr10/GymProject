@@ -15,15 +15,21 @@ public class main {
 
 		IGymDAO dao = GymDAOImpl.getInstance();
 		
-		User yaniv = new User("Yaniv", "Nadav", "222222" );
-		User amir = new User("Amir", "Rahav", "1111" );
+//		User yaniv = new User("Yaniv", "Nadav", "222222" );
+//		User amir = new User("Amir", "Rahav", "1111" );
+//		
+//		Activity backActivity = new Activity("back", 2, 10);
+//		Activity runActivity = new Activity("run", 10, 10);
+//		Activity legsActivity = new Activity("legs", 5, 8);
+//
+//		
+//		dao.addActivity(backActivity, 6);
+//		dao.addActivity(runActivity, 7);
+//		dao.addActivity(legsActivity, 7);
 		
-		Activity backActivity = new Activity("back", 2, 10);
-				
-		amir.addActivity(backActivity);
+		System.out.println(dao.getAllUsers().toString());
+
 		
-		dao.addUser(amir);
-//		dao.addActivity(backActivity, 1);
 
 		
 	}

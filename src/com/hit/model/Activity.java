@@ -15,9 +15,7 @@ public class Activity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="activity_id")
 	private int activityId;
-	
-	@Column(name="user_id")
-	private int user_id;
+
 	
 	@Column(name="activity_name")
 	private String workoutName;

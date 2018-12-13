@@ -50,9 +50,9 @@ public class GymDAOImpl implements IGymDAO {
 	public boolean addUser(User user) {
 		
 		//Check if user with parameters already exist
-//		
-//		if(!(this.checkUserExist(user)))
-//		{	
+		
+		if(!(this.checkUserExist(user)))
+		{	
 			//create new Session
 			Session session = this.openSession();
 	
@@ -60,8 +60,8 @@ public class GymDAOImpl implements IGymDAO {
 			session.beginTransaction();
 			
 			//save the user in db
-//			session.save(user);
-			session.saveOrUpdate(user);
+			session.save(user);
+			
 			//commit the transaction
 			session.getTransaction().commit();
 			
@@ -70,10 +70,10 @@ public class GymDAOImpl implements IGymDAO {
 			session.close();
 	
 			return true;
-//		}
-//		
-//		else
-//			return false;
+		}
+		
+		else
+			return false;
 		
 		
 	}
@@ -127,9 +127,11 @@ public class GymDAOImpl implements IGymDAO {
 		//start transaction
 		session.beginTransaction();
 		
-		User user1 = session.get(User.class, user_id);
+		User user = session.get(User.class, user_id);
 		
-		user1.addActivity(activity);
+		System.out.println("get user from db: " + user.toString());
+		
+		user.addActivity(activity);
 		
 		
 		//commit the transaction
@@ -142,14 +144,57 @@ public class GymDAOImpl implements IGymDAO {
 	}
 
 	@Override
-	public void updateActivity(Activity activity, User id) {
-		// TODO Auto-generated method stub
+	public void updateActivity(Activity updated_activity, int user_id) {
+		
+		
+		//create new Session
+		Session session = this.openSession();
+		
+		//start transaction
+		session.beginTransaction();
+		
+		User user = session.get(User.class, user_id);
+		
+		
+		Activity activity = session.get(Activity.class, updated_activity.getActivityId());
+		
+		activity.setNumRep(updated_activity.getNumRep());
+		activity.setNumSets(updated_activity.getNumSets());
+		
+		System.out.println("get user from db: " + user.toString());
+		
+		user.addActivity(activity);
+		
+		
+		//commit the transaction
+		session.getTransaction().commit();
+		
+		//close session
+		session.close();
 		
 	}
 
 	@Override
-	public void delete(Activity activity, User id) {
-		// TODO Auto-generated method stub
+	public void delete(Activity activity, int user_id) {
+		
+		//create new Session
+		Session session = this.openSession();
+		
+		//start transaction
+		session.beginTransaction();
+		
+		User user = session.get(User.class, user_id);
+		
+		System.out.println("get user from db: " + user.toString());
+		
+		user.addActivity(activity);
+		
+		
+		//commit the transaction
+		session.getTransaction().commit();
+		
+		//close session
+		session.close();
 		
 	}
 
@@ -173,7 +218,5 @@ public class GymDAOImpl implements IGymDAO {
 		session.close();
 	}
 
-//	public Activity getActivityById(int id) {
-//		return (Activity)instance.
-//	}
+
 }

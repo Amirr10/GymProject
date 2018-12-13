@@ -90,8 +90,8 @@ public class User {
 
 	public void addActivity(Activity activity) {
 		
-		if(this.getActivites()== null)
-			this.setActivites(new ArrayList<>());
+		if(this.getActivites() == null)
+			this.setActivites(new ArrayList<Activity>());
 		this.getActivites().add(activity);
 			
 	}
