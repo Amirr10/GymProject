@@ -116,7 +116,7 @@ public class GymDAOImpl implements IGymDAO {
 	
 	// add new Activity
 	@Override
-	public void addActivity(Activity activity, int user_id) {
+	public boolean addActivity(Activity activity, int user_id) {
 		
 		
 		//create new Session
@@ -127,8 +127,14 @@ public class GymDAOImpl implements IGymDAO {
 		
 		User user = session.get(User.class, user_id);
 		
-		System.out.println("get user from db: " + user.toString());
+		List<Activity> activities = user.getActivites();
 		
+		for(int i = 0; i<activities.size(); i++)
+		{
+			if(activities.get(i).getWorkoutName().equals(activity.getWorkoutName()))
+				return false;
+		}
+				
 		user.addActivity(activity);
 		
 		
@@ -137,6 +143,8 @@ public class GymDAOImpl implements IGymDAO {
 		
 		//close session
 		session.close();
+		
+		return true;
 		
 		
 	}
@@ -293,6 +301,8 @@ public class GymDAOImpl implements IGymDAO {
 		return true;
 
 	}
+
+
 
 
 
