@@ -32,9 +32,11 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	@OneToMany(fetch=FetchType.EAGER ,cascade=CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="user_id")
+//	private List<Activity> activites;
 	private List<Activity> activites;
+
 	
 	public User() {}
 	
@@ -96,13 +98,14 @@ public class User {
 			
 	}
 
-	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", password=" + password
-				+ "]";
+				+ ", activites=" + activites + "]";
 	}
+
 	
+
 	
 	
 	
