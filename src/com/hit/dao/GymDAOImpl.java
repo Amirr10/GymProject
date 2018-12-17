@@ -27,7 +27,9 @@ public class GymDAOImpl implements IGymDAO {
 	//Singleton
 	private static GymDAOImpl instance = null;
 	
-	
+	/**
+	 * Private Constructor
+	 * */
 	private GymDAOImpl() {
 		this.sessionFactory =  new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(User.class).addAnnotatedClass(Activity.class).buildSessionFactory();
 	}
@@ -100,7 +102,7 @@ public class GymDAOImpl implements IGymDAO {
 	
 	/**
 	 * Return list of all users from database
-	 * @return  List
+	 * @return  List 
 	 * */
 	public List<User> getAllUsers() {
 		
@@ -120,7 +122,7 @@ public class GymDAOImpl implements IGymDAO {
 	/**
 	 * Checks if user exist in database
 	 * @param user User
-	 * @return True if user exist, false if not.
+	 * @return true if user exist, false if not.
 	 * */
 	public boolean checkUserExist(User user) {
 		
@@ -141,45 +143,45 @@ public class GymDAOImpl implements IGymDAO {
 			
 	}
 	
-//	// add new Activity
-//	/**
-//	 * Adds new activity to user
-//	 * @param activity Activity
-//	 * @param user_id User ID
-//	 * */
-//	@Override
-//	public boolean addActivity(Activity activity, int user_id) {
-//		
-//		
-//		//create new Session
-//		Session session = this.openSession();
-//		
-//		//start transaction
-//		session.beginTransaction();
-//		
-//		User user = session.get(User.class, user_id);
-//		
-//		List<Activity> activities = user.getActivites();
-//		
-//		for(int i = 0; i<activities.size(); i++)
-//		{
-//			if(activities.get(i).getWorkoutName().equals(activity.getWorkoutName()))
-//				return false;
-//		}
-//				
-//		user.addActivity(activity);
-//		
-//		
-//		//commit the transaction
-//		session.getTransaction().commit();
-//		
-//		//close session
-//		session.close();
-//		
-//		return true;
-//		
-//		
-//	}
+	// add new Activity
+	/**
+	 * Adds new activity to user
+	 * @param activity Activity
+	 * @param user_id User ID
+	 * */
+	@Override
+	public boolean addActivity(Activity activity, int user_id) {
+		
+		
+		//create new Session
+		Session session = this.openSession();
+		
+		//start transaction
+		session.beginTransaction();
+		
+		User user = session.get(User.class, user_id);
+		
+		List<Activity> activities = user.getActivites();
+		
+		for(int i = 0; i<activities.size(); i++)
+		{
+			if(activities.get(i).getWorkoutName().equals(activity.getWorkoutName()))
+				return false;
+		}
+				
+		user.addActivity(activity);
+		
+		
+		//commit the transaction
+		session.getTransaction().commit();
+		
+		//close session
+		session.close();
+		
+		return true;
+		
+		
+	}
 
 	/**
 	 * Updates activity of specific user
@@ -261,39 +263,43 @@ public class GymDAOImpl implements IGymDAO {
 		
 	}
 
-	// returns Activities of a user
-	/**
-	 * returns Activities of a user
-	 * @param deleted_activity Activity
-	 * @param user_id User ID
-	 * */
-	@Override
-	public List<Activity> getActivities(int user_id) {
-		
-		//create new Session
-		Session session = this.openSession();
-		
-		
-		//start transaction
-		session.beginTransaction();
-		
-		User user = session.get(User.class, user_id);
-		
-		List<Activity> activities = user.getActivites();
-		
-
-		//commit the transaction
-		session.getTransaction().commit();
-		
-		//close session
-		session.close();
-		
-		return activities;
-	}
+//	// returns Activities of a user
+//	/**
+//	 * returns Activities of a user
+//	 * @param deleted_activity Activity
+//	 * @param user_id User ID
+//	 * */
+//	@Override
+//	public List<Activity> getActivities(int user_id) {
+//		
+//		//create new Session
+//		Session session = this.openSession();
+//		
+//		
+//		//start transaction
+//		session.beginTransaction();
+//		
+//		User user = session.get(User.class, user_id);
+//		
+//		List<Activity> activities = user.getActivites();
+//		
+//
+//		//commit the transaction
+//		session.getTransaction().commit();
+//		
+//		//close session
+//		session.close();
+//		
+//		return activities;
+//	}
 	
 	// update user
+	/**
+	 * Updates user details
+	 * @param user User
+	 * @return true if user updated successfully, false if not.*/
 	@Override
-	public boolean updateUser(User user) {
+	public boolean updateUser(int user_id ,User updated_user) {
 		
 		//create new Session
 		Session session = this.openSession();
@@ -302,8 +308,17 @@ public class GymDAOImpl implements IGymDAO {
 		session.beginTransaction();
 		
 		//update user details
-		session.update(user);
 		
+		
+		User user = session.get(User.class,user_id);
+		
+		
+		user.setFirstName(updated_user.getFirstName());
+		user.setLastName(updated_user.getLastName());
+		user.setPassword(updated_user.getPassword());
+		
+		
+//		session.save(user);
 		
 		//commit the transaction
 		session.getTransaction().commit();
@@ -314,7 +329,11 @@ public class GymDAOImpl implements IGymDAO {
 		return true;
 	}
 	
-	// remove user
+	/**
+	 * Removes user from database
+	 * @param user_id User ID
+	 * @return true if user removed, false if not.
+	 * */
 	@Override
 	public boolean removeUser(int user_id) {
 		
@@ -345,6 +364,26 @@ public class GymDAOImpl implements IGymDAO {
 		
 		return true;
 
+	}
+	
+	/**
+	 * Return user from database
+	 * @param user_name User Name
+	 * */
+	@Override
+	public User getUser(String user_name) {
+		
+		
+		List<User> users = this.getAllUsers();
+		
+		for(int i=0; i<users.size(); i++)
+		{
+			if(users.get(i).getFirstName().equals(user_name))
+				return users.get(i);
+		}
+		
+		
+		return null;
 	}
 
 

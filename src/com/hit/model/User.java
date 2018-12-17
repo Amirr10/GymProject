@@ -34,7 +34,6 @@ public class User {
 	
 	@OneToMany(fetch=FetchType.EAGER ,cascade=CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="user_id")
-//	private List<Activity> activites;
 	private List<Activity> activites;
 
 	
