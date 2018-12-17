@@ -5,11 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
+<link rel="stylesheet" type="text/css" href="./css/indexCSS.css">
 </head>
 <body>
 	<h3> Hi, username</h3>
 	
-	
+	<ul>
+		<li> My Activities </li>
+		<li> Reports</li>
+	</ul>
 	
 </body>
 </html>
