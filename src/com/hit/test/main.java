@@ -44,7 +44,7 @@ public class main {
 		dao.deleteActivity(runActivity, danielFromDB.getId());
 		
 		//check if user exist
-		System.out.println("Check if user with daniel exist in db: " +dao.checkUserExist(daniel));
+		System.out.println("Check if user with daniel exist in db: " +dao.checkUserExist(daniel.getEmail()));
 		
 		
 		

@@ -35,7 +35,7 @@ public class GymDAOImpl implements IGymDAO {
 	}
 	
 	/**
-	 * Singleton Desgin Pattern getInstance method
+	 * Singleton Design Pattern getInstance method
 	 * @return GymDAOImpl instance
 	 * */
 	public static GymDAOImpl getInstance() {
