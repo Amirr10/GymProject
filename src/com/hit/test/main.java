@@ -17,7 +17,7 @@ public class main {
 		IGymDAO dao = GymDAOImpl.getInstance();
 		
 		//create new user
-		User daniel = new User("Daniel", "David", "123456" );
+		User daniel = new User("daniel@gmail.com", "Daniel", "David", "123456" );
 		
 		System.out.println(dao.addUser(daniel));
 		

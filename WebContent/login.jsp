@@ -11,26 +11,39 @@
 
 	<h3> Welcome to GymTracker</h3>
 	
-	<form action="">
-	
-	  <div class="container">
-	    <label for="uemail"><b>E-mail</b></label>
-	    <input type="text" id="email" placeholder="Enter E-mail" name="email" required>
-	    <br>
-	
-	    <label for="upass"><b>Password</b></label>
-	    <input type="password" placeholder="Enter Password" name="psw" required>
-   	    <br>
-	    
-	    <label>
-	      <input type="checkbox" checked="checked" name="remember"> Remember me
-	    </label>
-	  </div>
+	<form action="controller/LoginController/login" method="post">
+		<table>
+		<tr>
+	    	<td>E-mail:</td>
+	    	<td>
+	    		<input type="text" id="email" placeholder="Enter E-mail" name="email" required>
+    		</td>
+   		</tr>
 		
-	  <div class="container">
-  	    <button type="submit">Login</button>
-	    <button type="button" >New User? Register Now</button>
-	  </div>
+		<tr>	
+	    	<td>Password:</td>
+	    	<td>
+	    		<input type="password" placeholder="Enter Password" name="psw" required>
+    		</td>
+   		</tr>
+   		
+   		<tr>
+   			<td></td>
+   			<td>
+	      		<input type="checkbox" checked="checked" name="remember"> Remember me
+	      	</td>
+	      
+	    </tr>
+		<tr>
+			<td>
+  	    		<button type="submit" value="LOGIN" >Login</button>
+    		</td>
+    		
+    		<td>
+	    		<button type="button" >New User? Register Now</button>	
+    		</td>
+	    </tr>
+	  </table>
 	</form>
 </body>
 </html>

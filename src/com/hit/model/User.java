@@ -23,6 +23,9 @@ public class User {
 	@Column(name="id")
 	private int id;
 	
+	@Column(name="email")
+	private String email;
+	
 	@Column(name="firstname")
 	private String firstName;
 	
@@ -32,6 +35,10 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
+	@Column(name="token")
+	private String token;
+	
+
 	@OneToMany(fetch=FetchType.EAGER ,cascade=CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="user_id")
 	private List<Activity> activites;
@@ -39,13 +46,30 @@ public class User {
 	
 	public User() {}
 	
-	public User(String firstName, String lastName, String password) {
+	public User(String email, String firstName, String lastName, String password) {
 		super();
+		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
 	}
 
+	
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public int getId() {
 		return id;

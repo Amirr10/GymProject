@@ -10,7 +10,7 @@ public interface IGymDAO {
 	public boolean addUser(User user);
 	public boolean removeUser(int user_id);
 	public boolean updateUser(int user_id,User user);
-	public boolean checkUserExist(User user);
+	public boolean checkUserExist(String email);
 	public List<User> getAllUsers();
 	public User getUser(String user_name);
 

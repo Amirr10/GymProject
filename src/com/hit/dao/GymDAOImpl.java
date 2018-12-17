@@ -73,7 +73,7 @@ public class GymDAOImpl implements IGymDAO {
 		
 		//Check if user with parameters already exist
 		
-		if(!(this.checkUserExist(user)))
+		if(!(this.checkUserExist(user.getEmail())))
 		{	
 			//create new Session
 			Session session = this.openSession();
@@ -124,7 +124,7 @@ public class GymDAOImpl implements IGymDAO {
 	 * @param user User
 	 * @return true if user exist, false if not.
 	 * */
-	public boolean checkUserExist(User user) {
+	public boolean checkUserExist(String email) {
 		
 		//create new Session
 		Session session = this.openSession();
@@ -133,7 +133,7 @@ public class GymDAOImpl implements IGymDAO {
 		session.beginTransaction();
 		
 
-		List<User> users = session.createQuery("from User where firstname = '" + user.getFirstName() + "'").getResultList();
+		List<User> users = session.createQuery("from User where email = '" + email + "'").getResultList();
 		
 		session.close();
 		if(users.size() == 0 || users.size()>1)
@@ -371,14 +371,14 @@ public class GymDAOImpl implements IGymDAO {
 	 * @param user_name User Name
 	 * */
 	@Override
-	public User getUser(String user_name) {
+	public User getUser(String email) {
 		
 		
 		List<User> users = this.getAllUsers();
 		
 		for(int i=0; i<users.size(); i++)
 		{
-			if(users.get(i).getFirstName().equals(user_name))
+			if(users.get(i).getEmail().equals(email))
 				return users.get(i);
 		}
 		
