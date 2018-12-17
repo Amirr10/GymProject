@@ -29,7 +29,8 @@ public class main {
 //		System.out.println(dao.getAllUsers().toString());
 //		
 		System.out.println("add user:" + dao.addUser(yaniv));
-		System.out.println("add activity:" + dao.addActivity(backActivity, 8));
+		yaniv.addActivity(activity);
+//		System.out.println("add activity:" + dao.addActivity(backActivity, 8));
 
 		
 

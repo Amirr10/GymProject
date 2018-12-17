@@ -11,14 +11,20 @@ import org.hibernate.query.Query;
 import com.hit.model.Activity;
 import com.hit.model.User;
 
+/**
+ * @author Yaniv Nadav, Nir Rozmarin and Amir Rahav
+ * @version 1.0
+ * @since December 2018
+ * 
+ * 
+ * */
+
 public class GymDAOImpl implements IGymDAO {
 	
 	//SessionFactory
-	
 	private SessionFactory sessionFactory;
 	
 	//Singleton
-
 	private static GymDAOImpl instance = null;
 	
 	
@@ -26,6 +32,10 @@ public class GymDAOImpl implements IGymDAO {
 		this.sessionFactory =  new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(User.class).addAnnotatedClass(Activity.class).buildSessionFactory();
 	}
 	
+	/**
+	 * Singleton Desgin Pattern getInstance method
+	 * @return GymDAOImpl instance
+	 * */
 	public static GymDAOImpl getInstance() {
 		
 		if(instance == null) {
@@ -34,18 +44,28 @@ public class GymDAOImpl implements IGymDAO {
 		return instance;
 	}
 	
-	// open new Session
-	
+	/**
+	 * Opening and returning new Session
+	 * @return Session
+	 */
+	 
 	public Session openSession() {
 		return this.sessionFactory.openSession();
 	}
 	
-	// close Session
+	/**
+	 * Closing SessionFactory.
+	 * 
+	 */
 	public void closeSession() {
 		this.sessionFactory.close();
 	}
 	
-	// add new User
+	/**
+	 * Adding new user to the database
+	 * @param user New user
+	 * @return True if user added, false if not
+	 * */
 	@Override
 	public boolean addUser(User user) {
 		
@@ -78,7 +98,10 @@ public class GymDAOImpl implements IGymDAO {
 		
 	}
 	
-	// get all users from db
+	/**
+	 * Return list of all users from database
+	 * @return  List
+	 * */
 	public List<User> getAllUsers() {
 		
 		//create new Session
@@ -94,7 +117,11 @@ public class GymDAOImpl implements IGymDAO {
 		return users;
 	}
 
-	// check if user exist in db
+	/**
+	 * Checks if user exist in database
+	 * @param user User
+	 * @return True if user exist, false if not.
+	 * */
 	public boolean checkUserExist(User user) {
 		
 		//create new Session
@@ -114,42 +141,51 @@ public class GymDAOImpl implements IGymDAO {
 			
 	}
 	
-	// add new Activity
-	@Override
-	public boolean addActivity(Activity activity, int user_id) {
-		
-		
-		//create new Session
-		Session session = this.openSession();
-		
-		//start transaction
-		session.beginTransaction();
-		
-		User user = session.get(User.class, user_id);
-		
-		List<Activity> activities = user.getActivites();
-		
-		for(int i = 0; i<activities.size(); i++)
-		{
-			if(activities.get(i).getWorkoutName().equals(activity.getWorkoutName()))
-				return false;
-		}
-				
-		user.addActivity(activity);
-		
-		
-		//commit the transaction
-		session.getTransaction().commit();
-		
-		//close session
-		session.close();
-		
-		return true;
-		
-		
-	}
+//	// add new Activity
+//	/**
+//	 * Adds new activity to user
+//	 * @param activity Activity
+//	 * @param user_id User ID
+//	 * */
+//	@Override
+//	public boolean addActivity(Activity activity, int user_id) {
+//		
+//		
+//		//create new Session
+//		Session session = this.openSession();
+//		
+//		//start transaction
+//		session.beginTransaction();
+//		
+//		User user = session.get(User.class, user_id);
+//		
+//		List<Activity> activities = user.getActivites();
+//		
+//		for(int i = 0; i<activities.size(); i++)
+//		{
+//			if(activities.get(i).getWorkoutName().equals(activity.getWorkoutName()))
+//				return false;
+//		}
+//				
+//		user.addActivity(activity);
+//		
+//		
+//		//commit the transaction
+//		session.getTransaction().commit();
+//		
+//		//close session
+//		session.close();
+//		
+//		return true;
+//		
+//		
+//	}
 
-	// update exist Activity
+	/**
+	 * Updates activity of specific user
+	 * @param updated_activity Activity
+	 * @param user_id User ID
+	 * */
 	@Override
 	public void updateActivity(Activity updated_activity, int user_id) {
 		
@@ -186,7 +222,11 @@ public class GymDAOImpl implements IGymDAO {
 		
 	}
 
-	// delete exist Activity
+	/**
+	 * Deletes activity of specific user
+	 * @param deleted_activity Activity
+	 * @param user_id User ID
+	 * */
 	@Override
 	public void deleteActivity(Activity deleted_activity, int user_id) {
 		
@@ -222,6 +262,11 @@ public class GymDAOImpl implements IGymDAO {
 	}
 
 	// returns Activities of a user
+	/**
+	 * returns Activities of a user
+	 * @param deleted_activity Activity
+	 * @param user_id User ID
+	 * */
 	@Override
 	public List<Activity> getActivities(int user_id) {
 		
