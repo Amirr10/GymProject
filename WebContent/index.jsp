@@ -5,13 +5,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="./css/indexCSS.css">
-	<link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+<!-- /	<link rel="stylesheet" type="text/css" href="./css/indexCSS.css">
+ -->	
+ 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script
-	src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js">
-	</script>
+	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 	
 	<%@ page import="com.hit.model.*, java.util.*" %>
 	<% 
@@ -19,23 +17,24 @@
 		User user = (User)session.getAttribute("user"); 
 		if(user!=null) 
 			user_name = user.getFirstName();
+		else
+			response.sendRedirect("controller");
 	%>
 </head>
 	<body>
 	
 	<div data-role="page" id="home">
 		 <div data-role="header">
-		 <h1>Hello <%String str = request.getParameter("name"); %>
-			 <% out.print(str); %></h1>
+		 <h1>Hello <%=user_name %>
 		 </div>
 		 <div data-role="content">
 		 <center> 
 		  </br></br></br>
 		
 		
-					 <a href="addActivity.jsp">Add New Activity</a> </br>
-				</br><a href="MyActivities.jsp">My Activities</a></br>
-				</br><a href="Reports.jsp">Reports</a> </br>
+					 <a href="controller/UserController/addActivity">Add New Activity</a> </br>
+				</br><a href="controller/UserController/myActivities">My Activities</a></br>
+				</br><a href="controller/UserController/myReports">Reports</a> </br>
 				
 		
 			

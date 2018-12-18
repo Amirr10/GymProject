@@ -36,6 +36,7 @@ public class LoginController {
 			String user_pass = user.getPassword();
 			if(user_pass.equals(password))
 			{
+				System.out.println("user found in db and password equal.");
 				session.setAttribute("user", user);
 				response.sendRedirect("/GymPro/index.jsp");
 
