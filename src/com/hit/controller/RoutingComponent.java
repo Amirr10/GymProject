@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class RoutingComponent
  */
-@WebServlet(value = {"/controller/*"})
+@WebServlet(value = {"/controller/*", "/"})
 public class RoutingComponent extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,26 +32,35 @@ public class RoutingComponent extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
-//				HttpSession session = request.getSession(false);
+				HttpSession session = request.getSession(false);
+				
+				
 				String str = request.getRequestURI();
 				PrintWriter out = response.getWriter();
 				
 				System.out.println("Path is :" + str);
-//				
-//				if (session.getAttribute("user") == null) {
-//					System.out.println("User in session is null");
-//				    response.sendRedirect("/GymPro/login_error.jsp"); // Not logged in, redirect to login page.
-//				    return ;
-//				}
+
+				String controllerName = null, actionName = null, strAfterAction = null;
+				
+			     String[] st = str.split("/");
+			     if(!str.endsWith("controller")) {
+			     controllerName = "com.hit.controller."+st[3];
+			     actionName = st[4];
+			     strAfterAction = null;
+			     }
+			     
+
+				
+				
+				if ((session.getAttribute("user") == null) && actionName==null){
+					System.out.println("User in session is null");
+				    response.sendRedirect("/GymPro/login.jsp"); // Not logged in, redirect to login page.
+				    return ;
+				}
 //				else {
 //				    chain.doFilter(request, response); // Logged in, just continue chain.
 //				}
 				
-			     String[] st = str.split("/");
-//			     try catch
-			     String controllerName = "com.hit.controller."+st[3];
-			     String actionName = st[4];
-			     String strAfterAction = null;
 
 			     
 			     
