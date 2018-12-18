@@ -32,17 +32,17 @@ public class RoutingComponent extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
-				HttpSession session = request.getSession(false);
+//				HttpSession session = request.getSession(false);
 				String str = request.getRequestURI();
 				PrintWriter out = response.getWriter();
 				
 				System.out.println("Path is :" + str);
-				
-				if (session.getAttribute("user") == null) {
-					System.out.println("User in session is null");
-				    response.sendRedirect("/GymPro/login_error.jsp"); // Not logged in, redirect to login page.
-				    return ;
-				}
+//				
+//				if (session.getAttribute("user") == null) {
+//					System.out.println("User in session is null");
+//				    response.sendRedirect("/GymPro/login_error.jsp"); // Not logged in, redirect to login page.
+//				    return ;
+//				}
 //				else {
 //				    chain.doFilter(request, response); // Logged in, just continue chain.
 //				}
