@@ -3,12 +3,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Home</title>
-<link rel="stylesheet" type="text/css" href="./css/indexCSS.css">
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="./css/indexCSS.css">
+	<%@ page import="com.hit.model.*, java.util.*" %>
+	<% 
+		String user_name = "User";
+		User user = (User)session.getAttribute("user"); 
+		if(user!=null) 
+			user_name = user.getFirstName();
+	%>
 </head>
 <body>
-	<h3> Hi, username</h3>
+	<h3> Hi, <%=user_name%></h3>
 	
 	<ul>
 		<li> My Activities </li>
