@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.8.3
+- https://www.phpmyadmin.net
+-
+- Host: localhost:8889
+- Generation Time: Dec 17, 2018 at 08:28 AM
+- Server version: 5.7.23
+- PHP Version: 7.2.8
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="gymdb" collation="utf8_general_ci" charset="utf8">
+            <pma:table name="activity">
+                CREATE TABLE `activity` (
+                  `activity_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `activity_name` varchar(45) NOT NULL,
+                  `rep_num` int(11) NOT NULL,
+                  `num_sets` int(11) NOT NULL,
+                  `user_id` int(11) DEFAULT NULL,
+                  PRIMARY KEY (`activity_id`),
+                  KEY `user_id` (`user_id`),
+                  CONSTRAINT `activity_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'gymdb'
+    -->
+    <database name="gymdb">
+        <!-- Table activity -->
+        <table name="activity">
+            <column name="activity_id">5</column>
+            <column name="activity_name">legs</column>
+            <column name="rep_num">5</column>
+            <column name="num_sets">8</column>
+            <column name="user_id">3</column>
+        </table>
+        <table name="activity">
+            <column name="activity_id">10</column>
+            <column name="activity_name">run</column>
+            <column name="rep_num">10</column>
+            <column name="num_sets">10</column>
+            <column name="user_id">2</column>
+        </table>
+        <table name="activity">
+            <column name="activity_id">12</column>
+            <column name="activity_name">legs</column>
+            <column name="rep_num">5</column>
+            <column name="num_sets">8</column>
+            <column name="user_id">2</column>
+        </table>
+        <table name="activity">
+            <column name="activity_id">13</column>
+            <column name="activity_name">legs</column>
+            <column name="rep_num">5</column>
+            <column name="num_sets">8</column>
+            <column name="user_id">8</column>
+        </table>
+        <table name="activity">
+            <column name="activity_id">14</column>
+            <column name="activity_name">back</column>
+            <column name="rep_num">5</column>
+            <column name="num_sets">5</column>
+            <column name="user_id">8</column>
+        </table>
+    </database>
+</pma_xml_export>
