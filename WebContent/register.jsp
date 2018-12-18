@@ -10,31 +10,50 @@
 
 	<h3> Create a new user</h3>
 
-	<form action="">
+	<form action="controller/RegisterController/register" method="post">
 	
-	  <div class="container">
-	    <label for="umail"><b>E-mail</b></label>
-	    <input type="text" id="email" placeholder="Enter E-mail" name="email" required>
-	    <br>
-	    
-   	    <label for="uname"><b>Username</b></label>
-	    <input type="text" id="username" placeholder="Enter Username" name="username" required>
-	    <br>
-	
-	    <label for="psw"><b>Password</b></label>
-	    <input type="password" placeholder="Enter Password" name="psw" required>
-   	    <br>
-   	    
-  	    <label for="rpsw"><b>re-password</b></label>
-	    <input type="password" placeholder="Re-Enter Password" name="rpsw" required>
-   	    <br>
-	    
-	  </div>
+		<table>	
+		    <tr>
+		   		<td>E-mail:</td>
+		    	<td>
+		    		<input type="text" id="email" placeholder="Enter E-mail" name="email" required>
+	    		</td>
+		    </tr>
+			<tr>	    
+	   	    	<td>First Name:</td>
+		    	<td>
+		    		<input type="text" id="fName" placeholder="Enter First Name" name="firstName" required>
+	    		</td>
+		    </tr>
+		    <tr>
+	   	   		<td>Last Name:</td>
+		  		<td>
+		  			<input type="text" id="lName" placeholder="Enter Last Name" name="lastName" required>
+	  			</td>
+			</tr>
+			<tr>
+		    	<td>Password:</td>
+		    	<td>
+		    		<input type="password" placeholder="Enter Password" name="psw" required>
+	    		</td>
+	   	    </tr>
+	   	    <tr>
+	  	    	<td>Re-Password:</td>
+		    	<td>
+		    		<input type="password" placeholder="Re-Enter Password" name="rpsw" required>
+	    		</td>
+		    </tr>
+			<tr>
+	   	    	<td>
+	   	    		<button type="submit">Back</button>
+	   	    	</td>
+	  	   		<td>
+	  	   			<button type="submit">Sign Up</button>
+	  			</td>
+	   	    </tr>
 		
-	  <div class="container">
-   	    <button type="submit">Back</button>
-  	    <button type="submit">Sign Up</button>
-	  </div>
+	    </table>
+  	    
 	</form>
 </body>
 </html>
