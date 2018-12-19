@@ -16,6 +16,16 @@ public class RegisterController {
 	{
 		PrintWriter out = response.getWriter();
 		
+        String buttonClicked = request.getParameter("kb");
+		
+
+		
+		if(buttonClicked.equals("LOGIN"))
+		{
+			response.sendRedirect("/GymPro/login.jsp");
+			return;
+		}
+		
 		//get singleton instance
 		IGymDAO dao = GymDAOImpl.getInstance();		
 		
@@ -25,26 +35,32 @@ public class RegisterController {
 		String password = request.getParameter("psw");
 		String rePassword = request.getParameter("rpsw");
 		
+		if(first_name.isEmpty()|| last_name.isEmpty()|| email.isEmpty() || password.isEmpty() || rePassword.isEmpty())
+			response.sendRedirect("/GymPro/register.jsp");
+		
 		if(!(password.equals(rePassword)))
 		{
-			out.println("Passwords don't match...");
-
+			response.sendRedirect("/GymPro/register.jsp");
 		} else {
 			
 			User newUser = new User(email,first_name, last_name, password);
 			
 			//check if use with same email exist
 			if(dao.checkUserExist(email))
-					out.println("Failed to register, User Exist.");
+				response.sendRedirect("/GymPro/register.jsp");
 			else 
 			{
 				dao.addUser(newUser);
-				out.println("You have successfully registered.");
+				response.sendRedirect("/GymPro/login.jsp");
 			}
-		}
+		}	
+	}
+	
+	public void getPage(HttpServletRequest request, HttpServletResponse response, String str) throws IOException
+	{
 		
+		response.sendRedirect("/GymPro/register.jsp");
 		
-			
 	}
 
 }

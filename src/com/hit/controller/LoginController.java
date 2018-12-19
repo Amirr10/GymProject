@@ -20,8 +20,17 @@ public class LoginController {
 		
 		PrintWriter out = response.getWriter();
 		
+        String buttonClicked = request.getParameter("kb");
+		
+
+		
+		if(buttonClicked.equals("REGISTER"))
+		{
+			response.sendRedirect("/GymPro/register.jsp");
+			return;
+		}
 		//get singleton instance
-		IGymDAO dao = GymDAOImpl.getInstance();		
+		IGymDAO dao = GymDAOImpl.getInstance();	
 		
 		//get login request params
 		String email = request.getParameter("email");
