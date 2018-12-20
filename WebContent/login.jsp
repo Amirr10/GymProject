@@ -3,46 +3,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
+ 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+	<meta charset="UTF-8">
+	<title>Login</title>
 </head>
 <body>
-
-	<h3> Welcome to GymTracker</h3>
+	<div data-role="page" id="login">
 	
-	<form action="controller/LoginController/login" method="post">
-		<table>
-		<tr>
-	    	<td>E-mail:</td>
-	    	<td>
-	    		<input type="text" id="email" placeholder="Enter E-mail" name="email" required>
-    		</td>
-   		</tr>
+		<h3> Welcome to GymTracker</h3>
 		
-		<tr>	
-	    	<td>Password:</td>
-	    	<td>
-	    		<input type="password" placeholder="Enter Password" name="psw" required>
-    		</td>
-   		</tr>
-   		
-   		<tr>
-   			<td></td>
-   			<td>
-	      		<input type="checkbox" checked="checked" name="remember"> Remember me
-	      	</td>
-	      
-	    </tr>
-		<tr>
-			<td>
-  	    		<button type="submit" value="LOGIN" >Login</button>
-    		</td>
-    		
-    		<td>
-	    		<button type="button" >New User? Register Now</button>	
-    		</td>
-	    </tr>
-	  </table>
-	</form>
+		<form action="controller/LoginController/login" method="post">
+			<table>
+			<tr>
+		    	<td>E-mail:</td>
+		    	<td>
+		    		<input type="text" id="email" placeholder="Enter E-mail" name="email" >
+	    		</td>
+	   		</tr>
+			
+			<tr>	
+		    	<td>Password:</td>
+		    	<td>
+		    		<input type="password" placeholder="Enter Password" name="psw" >
+	    		</td>
+	   		</tr>
+	   		
+
+			<tr>
+				<td>
+	  	    		<button type="submit" value="LOGIN" name="kb" >Login</button>
+	    		</td>
+	    		
+	    		<td>
+		    		<button type="submit" value="REGISTER" name="kb" >New User? Register Now</button>	
+	    		</td>
+		    </tr>
+		  </table>
+		</form>
+	</div>
 </body>
 </html>
