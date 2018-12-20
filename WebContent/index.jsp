@@ -5,8 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Home</title>
-<!-- /	<link rel="stylesheet" type="text/css" href="./css/indexCSS.css">
- -->	
+	
  	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
@@ -36,7 +35,6 @@
 				</br><a href="controller/UserController/myActivities">My Activities</a></br>
 				</br><a href="controller/UserController/myReports">Reports</a> </br>
 				
-		
 			
 		 </center>
 		 </div>

@@ -38,7 +38,10 @@ public class LoginController {
 		
 		//check if user with the same params exist
 		if(!(dao.checkUserExist(email)))
+		{
 			response.sendRedirect("/GymPro/login_error.jsp");
+			return;
+		}
 		else
 		{
 			User user = dao.getUser(email);
@@ -48,10 +51,11 @@ public class LoginController {
 				System.out.println("user found in db and password equal.");
 				session.setAttribute("user", user);
 				response.sendRedirect("/GymPro/index.jsp");
+				return;
 
 			} else {
 				response.sendRedirect("/GymPro/login_error.jsp");
-				
+				return;
 			}
 			
 		}

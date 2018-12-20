@@ -36,22 +36,30 @@ public class RegisterController {
 		String rePassword = request.getParameter("rpsw");
 		
 		if(first_name.isEmpty()|| last_name.isEmpty()|| email.isEmpty() || password.isEmpty() || rePassword.isEmpty())
+		{
 			response.sendRedirect("/GymPro/register.jsp");
+			return;
+		}
 		
 		if(!(password.equals(rePassword)))
 		{
 			response.sendRedirect("/GymPro/register.jsp");
+			return;
 		} else {
 			
 			User newUser = new User(email,first_name, last_name, password);
 			
 			//check if use with same email exist
 			if(dao.checkUserExist(email))
+			{
 				response.sendRedirect("/GymPro/register.jsp");
+				return;
+			}
 			else 
 			{
 				dao.addUser(newUser);
 				response.sendRedirect("/GymPro/login.jsp");
+				return;
 			}
 		}	
 	}
