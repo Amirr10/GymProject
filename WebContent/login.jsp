@@ -14,7 +14,7 @@
 	
 		<h3> Welcome to GymTracker</h3>
 		
-		<form action="controller/LoginController/login" method="post">
+		<form action="${pageContext.request.contextPath}/controller/LoginController/login" method="post">
 			<table>
 			<tr>
 		    	<td>E-mail:</td>

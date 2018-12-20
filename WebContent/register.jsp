@@ -10,7 +10,7 @@
 
 	<h3> Create a new user</h3>
 
-	<form action="controller/RegisterController/register" method="post">
+	<form action="${pageContext.request.contextPath}/controller/RegisterController/register" method="post">
 	
 		<table>	
 		    <tr>

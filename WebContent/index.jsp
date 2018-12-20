@@ -31,9 +31,9 @@
 		  </br></br></br>
 		
 		
-					 <a href="controller/UserController/addActivity">Add New Activity</a> </br>
-				</br><a href="controller/UserController/myActivities">My Activities</a></br>
-				</br><a href="controller/UserController/myReports">Reports</a> </br>
+					 <a href="${pageContext.request.contextPath}/controller/UserController/addActivity">Add New Activity</a> </br>
+				</br><a href="${pageContext.request.contextPath}/controller/UserController/myActivities">My Activities</a></br>
+				</br><a href="${pageContext.request.contextPath}/controller/UserController/myReports">Reports</a> </br>
 				
 			
 		 </center>
