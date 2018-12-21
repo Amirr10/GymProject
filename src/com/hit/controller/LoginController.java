@@ -30,15 +30,6 @@ public class LoginController {
 		{
 			System.out.println("clicked register");
 			response.sendRedirect("/GymPro/register.jsp");
-//			response.sendRedirect(request.getContextPath() + "/index.jsp");
-//			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/register.jsp");
-//           try {
-//			dispatcher.forward(request,response);
-//		} catch (ServletException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//			response.sendRedirect(request.getContextPath() + "/controller/RegisterController/getPage");
 
 			return;
 		}

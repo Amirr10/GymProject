@@ -12,36 +12,41 @@
 <body>
 	<div data-role="page" id="login">
 	
-		<h3> Welcome to GymTracker</h3>
-		
-		<form action="${pageContext.request.contextPath}/controller/LoginController/login" method="post">
-			<table>
-			<tr>
-		    	<td>E-mail:</td>
-		    	<td>
-		    		<input type="text" id="email" placeholder="Enter E-mail" name="email" >
-	    		</td>
-	   		</tr>
+		<div data-role="header" >
+		 	<h1>Welcome to GymTracker</h1>	 	
+		 	<h3> Please Login</h3>
+		</div>
 			
-			<tr>	
-		    	<td>Password:</td>
-		    	<td>
-		    		<input type="password" placeholder="Enter Password" name="psw" >
-	    		</td>
-	   		</tr>
-	   		
-
-			<tr>
-				<td>
-	  	    		<button type="submit" value="LOGIN" name="kb" >Login</button>
-	    		</td>
-	    		
-	    		<td>
-		    		<button type="submit" value="REGISTER" name="kb" >New User? Register Now</button>	
-	    		</td>
-		    </tr>
-		  </table>
-		</form>
-	</div>
+		<div data-role="content">
+			
+			<form action="${pageContext.request.contextPath}/controller/LoginController/login" method="post">
+				<table>
+				<tr>
+			    	<td>E-mail:</td>
+			    	<td>
+			    		<input type="text" id="email" placeholder="Enter E-mail" name="email" >
+		    		</td>
+		   		</tr>
+				
+				<tr>	
+			    	<td>Password:</td>
+			    	<td>
+			    		<input type="password" placeholder="Enter Password" name="psw" >
+		    		</td>
+		   		</tr>
+		   		
+	
+				<tr>
+					<td>
+		  	    		<button type="submit" value="LOGIN" name="kb" >Login</button>
+		    		</td>
+		    		
+		    		<td>
+			    		<button type="submit" value="REGISTER" name="kb" >New User? Register Now</button>	
+		    		</td>
+			    </tr>
+			  </table>
+			</form>
+		</div>
 </body>
 </html>

@@ -7,6 +7,7 @@
 <title>Login Error</title>
 </head>
 <body>
+
 	<h3> There was an error logging in. Please try once again...</h3>
 	
 	<%@ include file="login.jsp" %>

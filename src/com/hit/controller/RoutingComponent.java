@@ -44,9 +44,11 @@ public class RoutingComponent extends HttpServlet {
 				
 			     String[] st = str.split("/");
 			     if(!str.endsWith("controller")) {
-			     controllerName = "com.hit.controller."+st[3];
-			     actionName = st[4];
-			     strAfterAction = null;
+				     controllerName = "com.hit.controller."+st[3];
+				     actionName = st[4];
+				     System.out.println(st.length);
+				     if(st.length > 5)
+				    	 strAfterAction = st[5];
 			     }
 			     
 
@@ -57,10 +59,7 @@ public class RoutingComponent extends HttpServlet {
 				    response.sendRedirect("/GymPro/login.jsp"); // Not logged in, redirect to login page.
 				    return ;
 				}
-//				else {
-//				    chain.doFilter(request, response); // Logged in, just continue chain.
-//				}
-				
+
 
 			     
 			     
