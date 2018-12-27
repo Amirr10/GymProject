@@ -14,20 +14,48 @@
 	<div data-role="page" id="addActivity">
 		 <div data-role="header">
 		 	<h1>Add Activity</h1>
-		 	<a href="" data-rel="back">back</a>
+		 	<a href="${pageContext.request.contextPath}/controller/UserController/getPage/home" data-rel="back">Back</a>
 		 </div>
 		 <div data-role="content">
 			  	 <br>
  	 			 
  	 			 <center> Choose Your Activity</center>
 			 	 
-				 </br>
-			 	 <a href="${pageContext.request.contextPath}/controller/UserController/addActivity/back" data-role="button">Chest</a>
-			 	 <a href="${pageContext.request.contextPath}/controller/UserController/index" data-role="button">Back</a>
-			 	 <a href="${pageContext.request.contextPath}/controller/UserController/index" data-role="button">Shoulders</a>
- 			 	 <a href="${pageContext.request.contextPath}/controller/UserController/index" data-role="button">Shoulders</a>
-  			 	 <a href="${pageContext.request.contextPath}/controller/UserController/index" data-role="button">Biceps</a>
-  			 	 <a href="${pageContext.request.contextPath}/controller/UserController/index" data-role="button">Triceps</a>
+  			 	 
+  			 	 <form action="${pageContext.request.contextPath}/controller/UserController/addActivity" method="post">
+  			 	 
+					<fieldset data-role="controlgroup" data-type="horizontal">
+					
+					    <select name="activity_name" id="activity">
+					        <option value="#">Select Activity</option>
+					        <option value="Back">Back</option>
+					        <option value="Chest">Chest</option>
+					        <option value="Shoulders">Shoulders</option>
+					        <option value="Biceps">Biceps</option>
+					        <option value="Triceps">Triceps</option>
+					    </select>
+					
+					    <select name="sets" id="sets">
+					        <option value="#">Select sets</option>
+							<% for(int i=1; i<=10; i++)
+							{ %>
+					        <option value="<%=i%>"><%=i%></option>
+							<%} %>
+					    </select>
+					
+					    <select name="reps" id="reps">
+					        <option value="#">Select reps</option>
+							<% for(int i=1; i<=10; i++)
+							{ %>
+					        <option value="<%=i%>"><%=i%></option>
+							<%} %>
+					    </select>
+					
+					</fieldset>
+					
+		    		<button type="submit"> Add Activity</button>	
+					
+				</form>
   			 	 
  			 	 
 		</div>

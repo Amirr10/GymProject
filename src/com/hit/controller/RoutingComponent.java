@@ -46,7 +46,6 @@ public class RoutingComponent extends HttpServlet {
 			     if(!str.endsWith("controller")) {
 				     controllerName = "com.hit.controller."+st[3];
 				     actionName = st[4];
-				     System.out.println(st.length);
 				     if(st.length > 5)
 				    	 strAfterAction = st[5];
 			     }

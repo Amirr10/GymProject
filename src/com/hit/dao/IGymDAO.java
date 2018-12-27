@@ -12,7 +12,7 @@ public interface IGymDAO {
 	public boolean updateUser(int user_id,User user);
 	public boolean checkUserExist(String email);
 	public List<User> getAllUsers();
-	public User getUser(String user_name);
+	public User getUser(String user_email);
 
 
 	public boolean addActivity(Activity activity, int user_id);

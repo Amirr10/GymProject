@@ -10,35 +10,34 @@
 	<title>My Activities</title>
 </head>
 <body>
+<%@ page import="com.hit.model.*, java.util.*" %>
+<%
+	List<Activity> mActivities = (List) request.getAttribute("activities");
+%>
 
 	<div data-role="page" id="MyActivities">
 	
 	 <div data-role="header">
 	 	<h1>My Activities</h1>
-	 	<a href="" data-rel="back">back</a>
+	 	<a href="${pageContext.request.contextPath}/controller/UserController/getPage/home" data-rel="back">Back</a>
 	 </div>
 	 
 	 <div data-role="content">
  		<ul data-role="listview" data-split-icon="gear" data-split-theme="d">
-			<li>
-				<img src="" />
-				<h3>Back</h3>
-				<p>sets:3, reps:8</p>
-				<a href=""data-rel="dialog" data-transition="slideup">Edit Activity</a>
+ 		<%
+ 		for (Activity activity : mActivities)
+ 		{
+ 		%>
+ 			<li>
+			<img src="" />
+			<h3><%=activity.getWorkoutName() %></h3>
+			<p>sets:<%=activity.getNumSets() %>, reps:<%=activity.getNumRep() %></p>
+			<a href=""data-rel="dialog" data-transition="slideup">Edit Activity</a>
 			</li>
-			
-			<li>
-				<img src="" />
-				<h3>Chest</h3>
-				<p>sets:3, reps:10</p>
-				<a href=""data-rel="dialog" data-transition="slideup">Edit Activity</a>
-			</li>
-			<li>
-				<img src="" />
-				<h3>Biceps</h3>
-				<p>sets:4, reps:6</p>
-				<a href=""data-rel="dialog" data-transition="slideup">Edit Activity</a>
-			</li>
+		<%
+		}
+ 		%>
+
 		</ul> 
 
 

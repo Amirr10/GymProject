@@ -161,13 +161,13 @@ public class GymDAOImpl implements IGymDAO {
 		
 		User user = session.get(User.class, user_id);
 		
-		List<Activity> activities = user.getActivites();
-		
-		for(int i = 0; i<activities.size(); i++)
-		{
-			if(activities.get(i).getWorkoutName().equals(activity.getWorkoutName()))
-				return false;
-		}
+//		List<Activity> activities = user.getActivites();
+//		
+//		for(int i = 0; i<activities.size(); i++)
+//		{
+//			if(activities.get(i).getWorkoutName().equals(activity.getWorkoutName()))
+//				return false;
+//		}
 				
 		user.addActivity(activity);
 		
