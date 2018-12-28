@@ -13,6 +13,13 @@
 <%@ page import="com.hit.model.*, java.util.*" %>
 <%
 	List<Activity> mActivities = (List) request.getAttribute("activities");
+/* 	Collections.sort(mActivities, new Comparator<Activity>() {
+    @Override
+    public int compare(Activity a1, Activity a2) {
+        // TODO Auto-generated method stub
+        return a1.getDate_created().compareTo(a2.getDate_created());
+    	}
+	}); */
 %>
 
 	<div data-role="page" id="MyActivities">

@@ -1,5 +1,7 @@
 package com.hit.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,14 +25,26 @@ public class Activity {
 	@Column(name="rep_num")
 	private int numRep;
 	
+	public Date getDate_created() {
+		return date_created;
+	}
+
+	public void setDate_created(Date date_created) {
+		this.date_created = date_created;
+	}
+
 	@Column(name="num_sets")
 	private int numSets;
+	
+	@Column(name="date_created")
+	private Date date_created;
 
 	public Activity(String workoutName, int numRep, int numSets) {
 		super();
 		this.workoutName = workoutName;
 		this.numRep = numRep;
 		this.numSets = numSets;
+		this.date_created = new Date();
 	}
 	
 	public Activity() {}
