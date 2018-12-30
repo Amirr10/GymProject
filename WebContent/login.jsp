@@ -36,7 +36,7 @@
 		   		</tr>
 		   		
 	
-				<tr>
+			<center><tr>
 					<td>
 		  	    		<button type="submit" value="LOGIN" name="kb" >Login</button>
 		    		</td>
@@ -44,7 +44,8 @@
 		    		<td>
 			    		<button type="submit" value="REGISTER" name="kb" >New User? Register Now</button>	
 		    		</td>
-			    </tr>
+			    </tr></center>
+			    
 			  </table>
 			</form>
 		</div>

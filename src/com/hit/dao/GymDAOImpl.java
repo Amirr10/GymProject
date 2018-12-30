@@ -189,7 +189,7 @@ public class GymDAOImpl implements IGymDAO {
 	 * @param user_id User ID
 	 * */
 	@Override
-	public void updateActivity(Activity updated_activity, int user_id) {
+	public void updateActivity(Activity updated_activity) {
 		
 		
 		//create new Session
@@ -198,23 +198,10 @@ public class GymDAOImpl implements IGymDAO {
 		//start transaction
 		session.beginTransaction();
 		
-		User user = session.get(User.class, user_id);
+		Activity old_activity = session.get(Activity.class, updated_activity.getActivityId());
 		
-		List<Activity> activities = user.getActivites();
-		
-		//find the specific activity from the user activities and update 
-		for(int i=0; i<activities.size(); i++)
-		{
-
-			Activity old_activity = activities.get(i);
-
-			if(old_activity.getWorkoutName().equals(updated_activity.getWorkoutName()))
-			{
-				activities.remove(old_activity);
-				activities.add(updated_activity);
-			}
-
-		}
+		old_activity.setNumRep(updated_activity.getNumRep());
+		old_activity.setNumSets(updated_activity.getNumSets());
 			
 		//commit the transaction
 		session.getTransaction().commit();
@@ -230,7 +217,7 @@ public class GymDAOImpl implements IGymDAO {
 	 * @param user_id User ID
 	 * */
 	@Override
-	public void deleteActivity(Activity deleted_activity, int user_id) {
+	public void deleteActivity(int deleted_activity_id) {
 		
 		//create new Session
 		Session session = this.openSession();
@@ -238,22 +225,10 @@ public class GymDAOImpl implements IGymDAO {
 		//start transaction
 		session.beginTransaction();
 		
-		User user = session.get(User.class, user_id);
+		Activity activity_to_delete = session.get(Activity.class, deleted_activity_id);
 		
-		List<Activity> activities = user.getActivites();
-		
-		//find the specific activity from the user activities and update 
-		for(int i=0; i<activities.size(); i++)
-		{
+		session.remove(activity_to_delete);
 
-			Activity activity = activities.get(i);
-
-			if(activity.getWorkoutName().equals(deleted_activity.getWorkoutName()))
-			{
-				activities.remove(activity);
-			}
-
-		}
 			
 		//commit the transaction
 		session.getTransaction().commit();
@@ -263,35 +238,7 @@ public class GymDAOImpl implements IGymDAO {
 		
 	}
 
-//	// returns Activities of a user
-//	/**
-//	 * returns Activities of a user
-//	 * @param deleted_activity Activity
-//	 * @param user_id User ID
-//	 * */
-//	@Override
-//	public List<Activity> getActivities(int user_id) {
-//		
-//		//create new Session
-//		Session session = this.openSession();
-//		
-//		
-//		//start transaction
-//		session.beginTransaction();
-//		
-//		User user = session.get(User.class, user_id);
-//		
-//		List<Activity> activities = user.getActivites();
-//		
-//
-//		//commit the transaction
-//		session.getTransaction().commit();
-//		
-//		//close session
-//		session.close();
-//		
-//		return activities;
-//	}
+
 	
 	// update user
 	/**
@@ -384,6 +331,27 @@ public class GymDAOImpl implements IGymDAO {
 		
 		
 		return null;
+	}
+
+	@Override
+	public Activity getActivity(int activity_id) {
+		
+		//create new Session
+		Session session = this.openSession();
+		
+		//start transaction
+		session.beginTransaction();
+		
+
+		List<Activity> activities = session.createQuery("from Activity where activityId = '" + activity_id + "'").getResultList();
+		
+		session.close();
+		
+		if(activities.size() == 0 || activities.size()>1)
+			return null;
+		else
+			return activities.get(0);
+			
 	}
 
 

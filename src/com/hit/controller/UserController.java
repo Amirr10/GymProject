@@ -1,6 +1,7 @@
 package com.hit.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -89,4 +90,58 @@ public class UserController {
 	            response.sendRedirect("/GymPro/login.jsp");
 	       }
 	}
+	
+	public void editActivity (HttpServletRequest request, HttpServletResponse response, String str) throws IOException
+	{
+		int activity_id = Integer.parseInt(str);
+		Activity activity = dao.getActivity(activity_id);
+		request.setAttribute("activity", activity);
+
+		try {
+			request.getRequestDispatcher("/edit_activity.jsp").forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void editOrRemove (HttpServletRequest request, HttpServletResponse response, String str) throws IOException
+	{
+		
+        String buttonClicked = request.getParameter("kb");
+        
+		//get singleton instance
+		IGymDAO dao = GymDAOImpl.getInstance();	
+		
+		//get activity form request params
+		int activity_id = Integer.parseInt(str);
+
+		if(buttonClicked.equals("DELETE"))
+		{
+			dao.deleteActivity(activity_id);
+			response.sendRedirect("/GymPro/index.jsp");
+			return;
+		}
+		// else UPDATE clicked
+		Activity activity = dao.getActivity(activity_id);
+		
+		String activity_reps = request.getParameter("reps");
+		String activity_sets = request.getParameter("sets");
+		
+		int reps = Integer.parseInt(activity_reps);
+		int sets = Integer.parseInt(activity_sets);
+		
+		activity.setNumRep(reps);
+		activity.setNumSets(sets);
+		
+		dao.updateActivity(activity);
+		
+		
+		response.sendRedirect("/GymPro/index.jsp");
+
+	}
+
+	
+	
 }

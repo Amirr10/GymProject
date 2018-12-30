@@ -52,22 +52,22 @@ public class main {
 //		System.out.println("Check if user with daniel exist in db: " +dao.checkUserExist(daniel.getEmail()));
 //		
 		
-		
-		User yaniv = dao.getUser("yanivnadav93@gmail.com");
-		List<Activity> list = yaniv.getActivites();
-		System.out.println(list.toString());
-		Collections.sort(list, new Comparator<Activity>() {
-	    @Override
-	    public int compare(Activity a1, Activity a2) {
-	        // TODO Auto-generated method stub
-	        return a1.getDate_created().compareTo(a2.getDate_created());
-	    	}
-		});
-		
-		System.out.println(list.toString());
+//		
+//		User yaniv = dao.getUser("yanivnadav93@gmail.com");
+//		List<Activity> list = yaniv.getActivites();
+//		System.out.println(list.toString());
+//		Collections.sort(list, new Comparator<Activity>() {
+//	    @Override
+//	    public int compare(Activity a1, Activity a2) {
+//	        // TODO Auto-generated method stub
+//	        return a1.getDate_created().compareTo(a2.getDate_created());
+//	    	}
+//		});
+//		
+//		System.out.println(list.toString());
 
 		
-		
+		dao.deleteActivity(20);
 
 		
 

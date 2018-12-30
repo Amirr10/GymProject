@@ -31,18 +31,29 @@
 	 
 	 <div data-role="content">
  		<ul data-role="listview" data-split-icon="gear" data-split-theme="d">
- 		<%
- 		for (Activity activity : mActivities)
+  		<%
+ 		if(mActivities.isEmpty())
  		{
- 		%>
- 			<li>
-			<img src="" />
-			<h3><%=activity.getWorkoutName() %></h3>
-			<p>sets:<%=activity.getNumSets() %>, reps:<%=activity.getNumRep() %></p>
-			<a href=""data-rel="dialog" data-transition="slideup">Edit Activity</a>
-			</li>
+ 		
+ 			out.print("<h3>You don't have any activities right now.</h3>");
+ 		
+	  	} else {
+ 	 		for (Activity activity : mActivities)
+	 		{
+	 	%>
+	 			<li> 
+	 			<br>					
+		
+					<a href="${pageContext.request.contextPath}/controller/UserController/editActivity/<%=activity.getActivityId()%>" data-rel="dialog" data-transition="slideup">
+					<h3><%=activity.getWorkoutName() %> </h3>
+					<br>
+					<p>Sets: <%=activity.getNumSets() %> , Reps: <%=activity.getNumRep() %></p>
+					</a>								
+				</li>
 		<%
-		}
+	 		}
+	  	}
+		
  		%>
 
 		</ul> 

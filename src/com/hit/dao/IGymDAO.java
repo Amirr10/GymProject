@@ -16,9 +16,9 @@ public interface IGymDAO {
 
 
 	public boolean addActivity(Activity activity, int user_id);
-	public void updateActivity(Activity activity, int user_id);
-	public void deleteActivity(Activity activity, int user_id);
-//	public List<Activity> getActivities(int user_id);
+	public void updateActivity(Activity updated_activity);
+	public void deleteActivity(int deleted_activity_id);
+	public Activity getActivity (int activity_id);
 
 
 }
