@@ -87,6 +87,7 @@ public class UserController {
 	       HttpSession session = request.getSession();
 	       if(session.getAttribute("user") != null){
 	            session.removeAttribute("user");
+	            // use invalidate
 	            response.sendRedirect("/GymPro/login.jsp");
 	       }
 	}

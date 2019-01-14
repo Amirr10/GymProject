@@ -1,6 +1,7 @@
 package com.hit.model;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,7 +45,7 @@ public class Activity {
 		this.workoutName = workoutName;
 		this.numRep = numRep;
 		this.numSets = numSets;
-		this.date_created = new Date();
+		this.date_created = new Date(Calendar.getInstance().getTime().getTime());
 	}
 	
 	public Activity() {}

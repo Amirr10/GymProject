@@ -13,8 +13,8 @@
 
 	<div data-role="page" id="Reports">
 		<div data-role="header">
+		<a href="${pageContext.request.contextPath}/controller/UserController/getPage/home" data-role="button">Back</a>
 		<h1>My Reports</h1>
-	 	<a href="	" data-rel="back">Back</a>
 		</div>
 		
 		<div data-role="content">

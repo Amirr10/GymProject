@@ -24,7 +24,13 @@ public class LoginController {
         String buttonClicked = request.getParameter("kb");
 		
 		System.out.println("Context path: " + request.getContextPath() + "");
-
+		
+//		// solved problem first time 'back' button clicked 
+//		if(buttonClicked==null)
+//		{
+//			response.sendRedirect("/GymPro/index.jsp");
+//			return;
+//		}
 		
 		if(buttonClicked.equals("REGISTER"))
 		{
@@ -66,5 +72,7 @@ public class LoginController {
 		
 			
 	}
+	
+
 
 }

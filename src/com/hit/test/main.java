@@ -1,5 +1,6 @@
 package com.hit.test;
 
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -19,7 +20,7 @@ public class main {
 	public static void main(String[] args) {
 		
 		//get singleton instance
-		IGymDAO dao = GymDAOImpl.getInstance();
+//		IGymDAO dao = GymDAOImpl.getInstance();
 //		
 //		//create new user
 //		User daniel = new User("daniel@gmail.com", "Daniel", "David", "123456" );
@@ -67,10 +68,13 @@ public class main {
 //		System.out.println(list.toString());
 
 		
-		dao.deleteActivity(20);
-
+//		dao.deleteActivity(20);
 		
-
+	Date d = new Date();
+		
+	java.sql.Date sqlDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+	
+	System.out.println(sqlDate);
 		
 	}
 }

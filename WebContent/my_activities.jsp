@@ -25,8 +25,8 @@
 	<div data-role="page" id="MyActivities">
 	
 	 <div data-role="header">
+		<a href="${pageContext.request.contextPath}/controller/UserController/getPage/home" data-role="button">Back</a>
 	 	<h1>My Activities</h1>
-	 	<a href="${pageContext.request.contextPath}/controller/UserController/getPage/home" data-rel="back">Back</a>
 	 </div>
 	 
 	 <div data-role="content">
@@ -34,8 +34,8 @@
   		<%
  		if(mActivities.isEmpty())
  		{
- 		
- 			out.print("<h3>You don't have any activities right now.</h3>");
+ 			
+ 			out.print("<br><br><h3>You don't have any activities right now.</h3>");
  		
 	  	} else {
  	 		for (Activity activity : mActivities)
@@ -60,8 +60,8 @@
 
 
 	  </div>
+	  
 	  <div data-role="footer" data-position="fixed">
-			<center><a href="${pageContext.request.contextPath}/controller/UserController/index">Home Page</a></center>
 	  </div>
 	 </div>
  

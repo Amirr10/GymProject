@@ -18,6 +18,7 @@
 			user_name = user.getFirstName();
 		else
 			response.sendRedirect("controller");
+		
 	%>
  </head>
  <body>
